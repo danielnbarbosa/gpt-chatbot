@@ -1,0 +1,13 @@
+How do you do?  Please tell me your problem.
+
+Person: I am unhappy.
+Eliza: How do you feel about being unhappy?
+
+Person: I need some help, that much seems certain.
+Eliza: Would it really help you to get some help?
+
+Person: Perhaps I could learn to get along with my mother.
+Eliza: Good family relations are important.
+
+Person: My mother takes care of me.
+Eliza: Why do you think your mother takes care of you?
