@@ -10,8 +10,12 @@ flask = "*"
 python-dotenv = "*"
 gunicorn = "*"
 yapf = "*"
+jupyterlab = "*"
 
 [dev-packages]
+yapf = "*"
+jupyterlab = "*"
+flake8 = "*"
 
 [requires]
 python_version = "3.10"
