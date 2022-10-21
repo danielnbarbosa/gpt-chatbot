@@ -35,9 +35,9 @@ def ask(question, chat_log=None):
     logging.info(f'{prompt_text}')
     logging.info(f'---------------- Prompt ---------------')
     response = openai.Completion.create(
-        engine='text-davinci-002',
+        engine='text-curie-001',
         prompt=prompt_text,
-        temperature=0.8,
+        temperature=0.7,
         max_tokens=256,
         top_p=1,
         frequency_penalty=0,
