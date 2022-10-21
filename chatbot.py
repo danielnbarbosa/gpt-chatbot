@@ -31,9 +31,9 @@ def ask(question, chat_log=None):
     prompt_text_list_clipped = prompt_text.split('\n\n')[-prompt_max_len:]
     logging.info(f'prompt_len: {len(prompt_text_list_clipped)}')
     prompt_text = prompt_intro + '\n\n'.join(prompt_text_list_clipped)
-    #logging.info(f'---------------- Prompt ---------------')
-    #logging.info(f'{prompt_text}')
-    #logging.info(f'---------------- Prompt ---------------')
+    logging.info(f'---------------- Prompt ---------------')
+    logging.info(f'{prompt_text}')
+    logging.info(f'---------------- Prompt ---------------')
     response = openai.Completion.create(
         engine='text-davinci-002',
         prompt=prompt_text,
