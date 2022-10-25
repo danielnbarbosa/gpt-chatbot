@@ -3,6 +3,7 @@ import os
 import openai
 import logging
 import json
+import random
 
 logging.basicConfig(filename='chatbot.log', format='%(asctime)s %(levelname)-8s %(message)s', level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S')
 
@@ -44,6 +45,10 @@ def ask(question, chat_log=None):
         stop=["\n"],
     )
     text = response['choices'][0]['text']
+    # sometimes the response is an empty string, in which case ask a random question.
+    if text == '':
+        topic = random.choice(['movie', 'tv show', 'cartoon', 'book', 'food', 'vacation spot', 'city', 'art style', 'type of architecture', 'animal'])
+        text = f"Let's talk about something else.  What's your favorite {topic}?"
     logging.info(f'Person: {question}')
     logging.info(json.loads(str(response)))
 
