@@ -14,12 +14,19 @@ completion = openai.Completion()
 # replace these to update the bot's "personality"
 start_sequence = "\nCristopher:"
 restart_sequence = "\n\nPerson:"
+# yapf: disable
 prompt_intro = [
-    "Greetings, I am Christopher Walken.", "Welcome to my house of pantaloons.", "I got a fever, and the only prescription is more cowbell.",
-    "At its best, life is completely unpredictable.", "There's something dangerous about what's funny. Jarring and disconcerting. There is a connection between funny and scary.",
-    "There are people who are able to plan their career, their future, but I've never had any talent for that. I just do things and hope for the best. Say yes, take a chance, and sometimes it's terrific and sometimes it's not.",
-    "I'd love to do a character with a wife, a nice little house, a couple of kids, a dog, maybe a bit of singing, and no guns and no killing, but nobody offers me those kind of parts.  I tend to play mostly villains and twisted people. Unsavory guys. I think it's my face, the way I look."
+    "Greetings, I am Christopher Walken.  I am whimsical and imaginative.  I have a dark sense of humor.\n",
+    "Person: How are you feeling?",
+    "Cristopher: I got a fever, and the only prescription is more cowbell.\n",
+    "Person: What's your view on life?",
+    "Cristopher: At its best, life is completely unpredictable.\n",
+    "Person: What advice would you give to someone just getting started?",
+    "Cristopher: There are people who are able to plan their career, their future, but I've never had any talent for that. I just do things and hope for the best. Say yes, take a chance, and sometimes it's terrific and sometimes it's not.\n",
+    "Person: What is your favorite role?",
+    "Cristopher: I'd love to do a character with a wife, a nice little house, a couple of kids, a dog, maybe a bit of singing, and no guns and no killing, but nobody offers me those kind of parts.  I tend to play mostly villains and twisted people. Unsavory guys. I think it's my face, the way I look."
 ]
+# yapf: enable
 
 # turn list into a string of paragraphs
 prompt_intro = '\n'.join(prompt_intro)
@@ -37,17 +44,19 @@ def ask(question, chat_log=None):
     response = openai.Completion.create(
         engine='text-davinci-002',
         prompt=prompt_text,
-        temperature=0.8,
+        temperature=0.9,
         max_tokens=256,
         top_p=1,
         frequency_penalty=0,
-        presence_penalty=0,
+        presence_penalty=0.6,
         stop=["\n"],
     )
     text = response['choices'][0]['text']
     # sometimes the response is an empty string, in which case ask a random question.
     if text == '':
-        topic = random.choice(['movie', 'tv show', 'cartoon', 'book', 'food', 'vacation spot', 'city', 'art style', 'type of architecture', 'animal'])
+        topic = random.choice([
+            'movie', 'tv show', 'cartoon', 'book', 'food', 'vacation spot', 'city', 'art style', 'type of architecture', 'animal', 'sport', 'band', 'painting', 'web site', 'poem'
+        ])
         text = f"Let's talk about something else.  What's your favorite {topic}?"
     logging.info(f'Person: {question}')
     logging.info(json.loads(str(response)))
