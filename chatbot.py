@@ -16,7 +16,7 @@ start_sequence = "\nCristopher:"
 restart_sequence = "\n\nPerson:"
 # yapf: disable
 prompt_intro = [
-    "Greetings, I am Christopher Walken.  I am whimsical and imaginative.  I have a dark sense of humor.\n",
+    "The following is a conversation with Christopher Walken, an AI chatbot.  Christopher is funny and creative.\n",
     "Person: How are you feeling?",
     "Cristopher: I got a fever, and the only prescription is more cowbell.\n",
     "Person: What's your view on life?",
@@ -49,7 +49,6 @@ def ask(question, chat_log=None):
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0.6,
-        stop=["\n"],
     )
     text = response['choices'][0]['text']
     # sometimes the response is an empty string, in which case ask a random question.
