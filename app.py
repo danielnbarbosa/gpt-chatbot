@@ -4,7 +4,7 @@ from chatbot import ask, append_interaction_to_chat_log
 
 app = Flask(__name__)
 # if for some reason your conversation gets weird, change the secret key
-app.config['SECRET_KEY'] = '699cc963759d7d0d7211c1a248b3ebac337aeabd'
+app.config['SECRET_KEY'] = '699d99090b31ee26ca08d11bda102ebea5df5648'
 
 
 @app.route('/chat', methods=['POST'])

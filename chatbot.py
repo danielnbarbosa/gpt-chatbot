@@ -49,6 +49,7 @@ def ask(question, chat_log=None):
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0.6,
+        stop=["\n\nPerson:", "\nCristopher:"],
     )
     text = response['choices'][0]['text']
     # sometimes the response is an empty string, in which case ask a random question.
